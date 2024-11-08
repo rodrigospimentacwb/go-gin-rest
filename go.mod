@@ -1,6 +1,6 @@
 module github.com/rodrigospimentacwb/go-gin-rest
 
-go 1.23.3
+go 1.23
 
 require (
 	github.com/gin-gonic/gin v1.10.0
