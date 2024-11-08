@@ -1,0 +1,25 @@
+services:
+
+  postgres:
+    image: postgres:17-alpine3.20
+    container_name: go-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  go-prod-app:
+    container_name: go-app-prod
+    image: go-gin-rest-prod
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata: {}
